@@ -1,8 +1,318 @@
-body {
-    padding: 50px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
 }
 
+/* Provide sufficient contrast against white background */
 a {
-    color: #00B7FF;
+    color: #0366d6;
+}
+
+h1, h2, h3 {
+    color: #607280;
+}
+
+h1 {
+    font-size: 300%;
+}
+
+
+h2 {
+    font-size: 250%;
+}
+
+
+h3 {
+    font-size: 200%;
+}
+
+h4 {
+    font-size: 150%;
+    color: black;
+}
+
+.mainTemp {
+    font-size: 5em;
+    margin: 0 auto;
+}
+
+p {
+    font-size: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: #F5FBFF;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+}
+
+
+/* Weater
+-------------------------------------------------- */
+
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: auto;
+    margin-top: 4%;
+    max-width: 80%;
+}
+
+.mainCard {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    max-width: 70%;
+    margin: auto;
+    background: rgba(252, 254, 255, 0.8);
+    padding: 15px 0 15px 0;
+    border-radius: 10px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    max-width: 80%;
+    min-width: 36%;
+    margin: 5%;
+    padding: 0 15px 15px 15px;
+    background: rgba(252, 254, 255, 0.8);
+    border-radius: 10px;
+}
+
+.mainAll {
+    display: flex;
+    flex-direction: column;
+    min-width: 40%;
+    max-width: 70%;
+}
+
+.mainBase {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    max-height: 40vh;
+    margin: auto;
+    max-width: 80%;
+    flex-wrap: wrap;
+}
+
+.mainLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.line {
+    display: flex;
+    justify-content: space-between;
+    background: #E0E0E0;
+    color: white;
+    height: 15%;
+    align-items: center;
+}
+
+.params {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 40%;
+    max-height: 40vh;
+    margin: 0;
+    padding: 0;
+}
+
+.indics {
+    font-weight: bold;
+}
+
+.bigIcon {
+    height: 60%;
+    margin: 0 auto;
+}
+
+.smallIcon {
+    width: 13%;
+}
+
+.inp {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    min-width: 50%;
+}
+
+
+.inpStyle {
+    height: 30%;
+    min-height: 4vh;
+    border: none;
+    background: #EBF1F5;
+    padding-left: 10px;
+    padding-right: 10px;
+    outline: none;
+}
+
+.btn {
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+    border: none;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+    transition: .3s;
+    outline: none;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0;
+}
+
+    .btn:hover {
+        background: #D1E0E5;
+        box-shadow: 0 15px 20px rgba(205, 217, 223, .4);
+        color: white;
+        transform: translateY(-7px);
+    }
+
+    .btn:disabled {
+        background: #E6E7E7;
+        transform: none;
+        box-shadow: none;
+        color: #524f4e;
+        cursor: default;
+    }
+
+.bigBtn {
+    height: 48px;
+    width: 48px;
+    font-size: 2em;
+    margin-left: 5%;
+}
+
+.midBtn {
+    height: 26px;
+    flex: 0 0 24px;
+    font-size: 1.5em;
+    margin-left: 5%;
+}
+
+.askBtn {
+    opacity: 0.9;
+}
+
+    .askBtn:hover {
+        opacity: 1;
+        color: rgba(96, 114, 128, 0.9);
+    }
+
+.shortened {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: auto;
+    margin-top: 4%;
+    max-width: 80%;
+}
+
+.inp {
+    max-width: 80%;
+    min-width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.geoAsk {
+    opacity: 0.5;
+    position: fixed;
+    color: rgba(96, 114, 128, 0.9);
+    text-align: center;
+    padding-bottom: 2%;
+    background: rgba(96, 114, 128, 0.1);
+    margin-top: 5px;
+    border-radius: 6px;
+    transition: all 2s ease-in-out;
+}
+
+    .geoAsk:hover {
+        opacity: 1;
+    }
+
+.loader {
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 9999;
+    visibility: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0 0 -125px;
 }

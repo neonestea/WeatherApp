@@ -1,5 +1,59 @@
-extends layout
+doctype html
+head
+  meta(charset='utf-8')
+  link(href='/stylesheets/main.css' rel='stylesheet')
+  title Weather
+  link(rel='icon' href='/images/favicon.ico')
+  meta(name='keywords' content='Погода')
+  meta(name='description' content='Погода')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  script(src='/javascripts/weather.js')
+header
+main
+  img#loader.loader(src='/images/loader.gif' alt='loader')
+  #geo_ask.geoAsk
+    p Give geolocation?
+    .mainLine(style='justify-content: space-evenly;')
+      button.btn.askBtn(onclick='agreeGeo();') Yes
+      button.btn.askBtn(onclick='declineGeo();') No
+  .mainLine.shortened(style=' margin-bottom: 10%;')
+    h1 Weather here
+    button.btn.bigBtn(onclick='updateGeolocation();') &#x27F3;
+  .mainCard
+    .mainAll
+      h3.mainCity(style='margin: auto;')
+      .mainBase
+        img.bigIcon(alt='weatherIcon')
+        h4.mainTemp
+    ul.params
+      li.line
+        p.indics Wind
+        p.vals.wind
+      li.line
+        p.indics Clouds
+        p.vals.clouds
+      li.line
+        p.indics Pressure
+        p.vals.pressure
+      li.line
+        p.indics Humidity
+        p.vals.humidity
+      li.line
+        p.indics Coordinates
+        p.vals.coords
+  .mainLine.shortened
+    h2 Favourites
+    .mainLine.inp
+      input#text.inpStyle(list='cities' maxlength='25' size='27' placeholder='Enter city' autocomplete='off' oninput='enterText();')
+      datalist#cities
+        option(value='Moscow')
+        option(value='Vladimir')
+        option(value='Omsk')
+        option(value='Tomsk')
+        option(value='Tula')
+        option(value='Novgorod')
+        option(value='Yakutsk')
+      button#addBtn.btn.midBtn(onclick='addCity();' disabled='' action='/favourites' method='post') +
+  ul#cards.cards
+footer
 
-block content
-  h1= title
-  p Welcome to #{title}
