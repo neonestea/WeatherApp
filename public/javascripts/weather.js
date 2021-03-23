@@ -25,23 +25,23 @@ function hideGeoAsk() {
 }
 
 function success(position) {
-    var latitude = position.coords.latitude; // широта
-    var longitude = position.coords.longitude; // долгота
+    var latitude = position.coords.latitude; // С€РёСЂРѕС‚Р°
+    var longitude = position.coords.longitude; // РґРѕР»РіРѕС‚Р°
     currentPos.lat = latitude;
     currentPos.lon = longitude;
 }
 
-// Обработка ошибок
+// РћР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє
 function error(errorCode) {
     var msg = "";
     switch (errorCode) {
-        case 1: msg = "Нет разрешения"; // Пользователь не дал разрешения на определение местоположения
+        case 1: msg = "РќРµС‚ СЂР°Р·СЂРµС€РµРЅРёСЏ"; // РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РЅРµ РґР°Р» СЂР°Р·СЂРµС€РµРЅРёСЏ РЅР° РѕРїСЂРµРґРµР»РµРЅРёРµ РјРµСЃС‚РѕРїРѕР»РѕР¶РµРЅРёСЏ
             break;
-        case 2: msg = "Техническая ошибка";
+        case 2: msg = "РўРµС…РЅРёС‡РµСЃРєР°СЏ РѕС€РёР±РєР°";
             break;
-        case 3: msg = "Превышено время ожидания";
+        case 3: msg = "РџСЂРµРІС‹С€РµРЅРѕ РІСЂРµРјСЏ РѕР¶РёРґР°РЅРёСЏ";
             break;
-        default: msg = "Что то случилось не так";
+        default: msg = "Р§С‚Рѕ С‚Рѕ СЃР»СѓС‡РёР»РѕСЃСЊ РЅРµ С‚Р°Рє";
     }
     alert(msg);
 }
@@ -232,8 +232,14 @@ function createCityCard(cityName) {
             params.appendChild(line5);
             cityCard.appendChild(params);
 
-            cityCard.id = cityName;
-            return cityCard;
+    cityCard.id = cityName;
+    if (val5.textContent == '') {
+        return null;
+    }
+    else {
+        return cityCard;
+    }
+            
         //    //loader.style.display = 'none';
 }
 
@@ -267,6 +273,9 @@ function addCity() {
                     let city = createCityCard(cityName);
                     if (city) {
                         cards.appendChild(city);
+                    }
+                    else {
+                        alert("City not found");
                     }
                 }
             })
