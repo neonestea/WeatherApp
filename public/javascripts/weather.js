@@ -4,6 +4,7 @@ let currentPos = {
     lon: "37"
 }
 let adding = "no adding";
+let exists = false;
 
 var makeElement = function (tagName, className, text) {
     var element = document.createElement(tagName);
@@ -64,7 +65,7 @@ async function getWeatherAPICoords(lon = '37', lat = '55') {
             document.querySelector('.humidity').textContent = data.humidity;
             document.querySelector('.coords').innerHTML = data.coords;
         } catch (err) {
-            console.log("Invalid city");
+            alert("Invalid city");
         }
 }
 
@@ -73,10 +74,10 @@ async function getWeatherAPICity(city) {
     try {
         let resp = await fetch(url);
         let data = await resp.json();
-        //console.log(data);
+        
         return data;
     } catch (err) {
-        console.log("Invalid city");
+        alert("Invalid city");
     }
 }
 
@@ -193,22 +194,28 @@ function createCityCard(cityName) {
     let line5 = makeElement('li', 'line', "");
     let indic5 = makeElement('p', 'indics', "Coordinates");
     let val5 = makeElement('p', 'vals', '');
-
+    
     let promise = getWeatherAPICity(cityName);
-    promise
-        .then(
-            result => {
-                if (result) {
-                    console.log(result);
-                    temp.innerHTML = result.temp + '&deg;C';
-                    icon.src = result.iconSrc;
-                    val1.textContent = result.wind;
-                    val2.textContent = result.clouds;
-                    val3.textContent = result.pressure;
-                    val4.textContent = result.humidity;
-                    val5.textContent = result.coords;
-                }
-            })
+        promise
+            .then(
+                result => {
+                    if (result) {
+
+                        temp.innerHTML = result.temp + '&deg;C';
+                        icon.src = result.iconSrc;
+                        val1.textContent = result.wind;
+                        val2.textContent = result.clouds;
+                        val3.textContent = result.pressure;
+                        val4.textContent = result.humidity;
+                        val5.textContent = result.coords;
+                        cityCard.id = cityName;
+
+                    }
+                    
+                    
+
+                })
+
             mainLine.appendChild(name);
             mainLine.appendChild(temp);
             mainLine.appendChild(icon);
@@ -232,13 +239,7 @@ function createCityCard(cityName) {
             params.appendChild(line5);
             cityCard.appendChild(params);
 
-    cityCard.id = cityName;
-    if (val5.textContent == '') {
-        return null;
-    }
-    else {
         return cityCard;
-    }
             
         //    //loader.style.display = 'none';
 }
@@ -256,6 +257,9 @@ async function checkIfCityExists(city) {
     return res;
 }
 
+
+
+
 function addCity() {
     
     const text = document.getElementById('text');
@@ -263,20 +267,22 @@ function addCity() {
     const cityName = text.value;
     const addBtn = document.getElementById('addBtn');
 
-    addCityToDB(cityName);
-    let promise = checkIfCityExists(cityName);
+    
+    let promise = getWeatherAPICity(cityName);
     promise
         .then(
             result => {
                 if (result) {
-                    
-                    let city = createCityCard(cityName);
-                    if (city) {
-                        cards.appendChild(city);
-                    }
-                    else {
-                        alert("City not found");
-                    }
+                    addCityToDB(cityName);
+                    let promise = checkIfCityExists(cityName);
+                    promise
+                        .then(
+                            result => {
+                                if (result) {
+                                    let city = createCityCard(cityName);
+                                    cards.appendChild(city);
+                                }
+                            })
                 }
             })
 
@@ -302,7 +308,9 @@ function showFavorites() {
             })
 }
 
+
 document.addEventListener("DOMContentLoaded", showFavorites);
+
 
 
 
@@ -315,7 +323,6 @@ function enterText() {
         addBtn.disabled = true;
     }
 };
-
 
 
 function removeCard() {
