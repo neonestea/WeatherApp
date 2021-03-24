@@ -67,11 +67,12 @@ function getCityWeather(res, city) {
         url: 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=a079906fe74d05d272d283d1f9b625de',
     };
     request(options, function (error, response, body) {
+        
         if (error) throw new Error(error);
         body = JSON.parse(body);
-        if (body.cod == '400') {
-            res.send({ mes: body.message });
-            console.log('error');
+        console.log();
+        if (body.cod == '404') {
+            res.send("{ code: incorrect city }");
         }
         else {
             let data = {
